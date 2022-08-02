@@ -78,6 +78,7 @@ export type EdgeContext = VMContext & {
   URLSearchParams: typeof EdgePrimitives.URLSearchParams
   WritableStream: typeof EdgePrimitives.WritableStream
   WritableStreamDefaultWriter: typeof EdgePrimitives.WritableStreamDefaultWriter
+  EdgeRuntime: string
 }
 
 function addPrimitives(context: VMContext) {
@@ -88,6 +89,7 @@ function addPrimitives(context: VMContext) {
   defineProperty(context, 'clearTimeout', { value: clearTimeout })
   defineProperty(context, 'setInterval', { value: setInterval })
   defineProperty(context, 'setTimeout', { value: setTimeout })
+  defineProperty(context, 'EdgeRuntime', { value: 'edge-runtime' })
 
   // Console
   defineProperties(context, {
